@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100819">
+
+<title>Oráculo do Eclipse Cigano | Consultas</title>
+
+<meta name="description" content="Conheça o Oráculo do Eclipse Cigano. Escolha sua consulta, pague via Pix e receba sua leitura em PDF.">
+
+<style>
+:root {
+--bg: #0b0710;
+--panel: #171020;
+--purple: #9b5cff;
+--gold: #e8c77b;
+--text: #f7f1ff;
+--muted: #c1b4d1;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+color: var(--text);
+background:
+radial-gradient(ellipse at top, #29143e 0%, var(--bg) 55%);
+line-height: 1.6;
+}
+
+header {
+padding: 18px 6%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 15px;
+flex-wrap: wrap;
+border-bottom: 1px solid #ffffff15;
+background: #0b0710eF;
+}
+
+.logo {
+color: var(--gold);
+font-weight: bold;
+font-size: 18px;
+letter-spacing: 1px;
+}
+
+nav {
+display: flex;
+gap: 18px;
+flex-wrap: wrap;
+}
+
+nav a {
+color: var(--text);
+text-decoration: none;
+font-size: 14px;
+}
+
+nav a:hover {
+color: var(--gold);
+}
+
+.hero {
+text-align: center;
+padding: 90px 20px 75px;
+max-width: 900px;
+margin: auto;
+}
+
+.moon {
+font-size: 65px;
+margin-bottom: 15px;
+filter: drop-shadow(0 0 20px #a45cff);
+}
+
+.hero h1 {
+font-size: clamp(32px, 6vw, 57px);
+color: var(--gold);
+line-height: 1.2;
+margin-bottom: 20px;
+}
+
+.hero p {
+max-width: 650px;
+margin: 0 auto 28px;
+color: var(--muted);
+font-size: 17px;
+}
+
+.button {
+display: inline-block;
+padding: 13px 22px;
+border-radius: 30px;
+border: none;
+cursor: pointer;
+text-decoration: none;
+font-weight: bold;
+font-size: 14px;
+transition: .2s;
+text-align: center;
+}
+
+.button:hover {
+transform: translateY(-2px);
+filter: brightness(1.15);
+}
+
+.primary {
+color: #170d20;
+background: linear-gradient(135deg, var(--gold), #fff0b8);
+}
+
+.secondary {
+color: white;
+background: #251535;
+border: 1px solid var(--purple);
+}
+
+.whatsapp {
+color: white;
+background: #168b52;
+}
+
+section {
+padding: 55px 6%;
+max-width: 1200px;
+margin: auto;
+}
+
+.section-title {
+text-align: center;
+color: var(--gold);
+font-size: 30px;
+margin-bottom: 12px;
+}
+
+.section-description {
+text-align: center;
+color: var(--muted);
+margin: 0 auto 32px;
+max-width: 650px;
+}
+
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+gap: 20px;
+}
+
+.card {
+background: linear-gradient(145deg, #21152e, #120d19);
+border: 1px solid #9b5cff45;
+border-radius: 18px;
+padding: 25px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+box-shadow: 0 8px 25px #00000025;
+}
+
+.card h3 {
+color: var(--gold);
+margin-bottom: 10px;
+font-size: 20px;
+}
+
+.card p {
+color: var(--muted);
+margin-bottom: 15px;
+font-size: 14px;
+}
+
+.price {
+color: white;
+font-size: 27px;
+font-weight: bold;
+margin-top: auto;
+margin-bottom: 18px;
+}
+
+.card .button {
+width: 100%;
+}
+
+.steps {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+}
+
+.step {
+background: var(--panel);
+border-radius: 15px;
+padding: 22px;
+text-align: center;
+border: 1px solid #ffffff12;
+}
+
+.step strong {
+color: var(--gold);
+display: block;
+font-size: 19px;
+margin-bottom: 8px;
+}
+
+.panel {
+background: var(--panel);
+border: 1px solid #9b5cff55;
+padding: 28px;
+border-radius: 18px;
+max-width: 720px;
+margin: auto;
+}
+
+label {
+display: block;
+margin: 15px 0 6px;
+font-size: 14px;
+color: var(--muted);
+}
+
+input, textarea {
+width: 100%;
+padding: 13px;
+border-radius: 10px;
+border: 1px solid #624579;
+background: #0d0913;
+color: white;
+font: inherit;
+}
+
+textarea {
+min-height: 110px;
+resize: vertical;
+}
+
+input:focus, textarea:focus {
+outline: 2px solid var(--purple);
+}
+
+.selected-service {
+padding: 16px;
+border-radius: 12px;
+background: #28183a;
+margin-bottom: 15px;
+}
+
+.selected-service strong {
+color: var(--gold);
+}
+
+.actions {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-top: 22px;
+}
+
+.actions .button {
+flex: 1;
+}
+
+.hidden {
+display: none !important;
+}
+
+.pix-key {
+background: #0d0913;
+border: 1px dashed var(--gold);
+border-radius: 12px;
+padding: 17px;
+text-align: center;
+margin: 18px 0;
+overflow-wrap: anywhere;
+}
+
+.pix-key strong {
+display: block;
+color: var(--gold);
+font-size: 21px;
+margin: 8px 0;
+}
+
+.notice {
+color: var(--muted);
+font-size: 13px;
+margin-top: 15px;
+}
+
+footer {
+text-align: center;
+padding: 35px 20px;
+border-top: 1px solid #ffffff15;
+color: var(--muted);
+font-size: 13px;
+}
+
+footer .logo {
+margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+header {
+justify-content: center;
+text-align: center;
+}
+
+nav {
+justify-content: center;
+}
+
+.hero {
+padding-top: 60px;
+}
+
+.actions {
+flex-direction: column;
+}
+
+.actions .button {
+width: 100%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🌙 ORÁCULO DO ECLIPSE CIGANO</div>
+
+<nav>
+<a href="#inicio">Início</a>
+<a href="#consultas">Consultas</a>
+<a href="#como-funciona">Como funciona</a>
+<a href="#contato">Contato</a>
+</nav>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+<div class="moon">🌑</div>
+
+<h1>Oráculo do Eclipse Cigano</h1>
+
+<p>
+Descubra novas perspectivas, explore os simbolismos das cartas
+e encontre espaço para refletir sobre seus caminhos e decisões.
+</p>
+
+<a class="button primary" href="#consultas">
+✨ Escolher minha consulta
+</a>
+
+<a class="button secondary"
+href="https://wa.me/5511985934594"
+target="_blank"
+rel="noopener noreferrer">
+💬 Falar pelo WhatsApp
+</a>
+</section>
+
+<section id="consultas">
+<h2 class="section-title">Nossas Consultas</h2>
+
+<p class="section-description">
+Escolha a leitura que melhor corresponde às suas dúvidas.
+Todas as consultas são entregues em PDF, sem custo adicional.
+</p>
+
+<div class="cards">
+
+<article class="card">
+<h3>🔮 Pergunta Individual</h3>
+<p>Uma pergunta específica com uma tiragem de 6 cartas.</p>
+<div class="price">R$ 5,99</div>
+<button class="button primary"
+onclick="escolherServico('Pergunta Individual — 6 cartas', 5.99, 1)">
+Escolher consulta
+</button>
+</article>
+
+<article class="card">
+<h3>🌙 Pacote com 4 Perguntas</h3>
+<p>Quatro perguntas para explorar diferentes dúvidas.</p>
+<div class="price">R$ 15,99</div>
+<button class="button primary"
+onclick="escolherServico('Pacote com 4 perguntas', 15.99, 4)">
+Escolher consulta
+</button>
+</article>
+
+<article class="card">
+<h3>✨ Pacote com 10 Perguntas</h3>
+<p>Dez perguntas para uma consulta mais abrangente.</p>
+<div class="price">R$ 25,90</div>
+<button class="button primary"
+onclick="escolherServico('Pacote com 10 perguntas', 25.90, 10)">
+Escolher consulta
+</button>
+</article>
+
+<article class="card">
+<h3>🃏 Tiragem Geral</h3>
+<p>Uma leitura geral com tiragem de 15 cartas.</p>
+<div class="price">R$ 23,99</div>
+<button class="button primary"
+onclick="escolherServico('Tiragem Geral — 15 cartas', 23.99, 1)">
+Escolher consulta
+</button>
+</article>
+
+<article class="card">
+<h3>💜 Leitura Personalizada</h3>
+<p>Consulta adaptada ao tema e às dúvidas apresentados.</p>
+<div class="price">R$ 29,90</div>
+<button class="button primary"
+onclick="escolherServico('Leitura Personalizada', 29.90, 1)">
+Escolher consulta
+</button>
+</article>
+
+<article class="card">
+<h3>🌌 Leitura Intuitiva</h3>
+<p>Uma leitura intuitiva para reflexão e autoconhecimento.</p>
+<div class="price">R$ 27,90</div>
+<button class="button primary"
+onclick="escolherServico('Leitura Intuitiva', 27.90, 1)">
+Escolher consulta
+</button>
+</article>
+
+</div>
+</section>
+
+<section id="pedido" class="hidden">
+<h2 class="section-title">Seu Pedido</h2>
+
+<p class="section-description">
+Preencha seus dados para continuar com a consulta.
+</p>
+
+<div class="panel">
+<div class="selected-service">
+<strong>Serviço escolhido:</strong>
+<div id="servicoSelecionado"></div>
+
+<strong>Valor:</strong>
+<div id="valorSelecionado"></div>
+</div>
+
+<form id="formPedido">
+
+<label for="nome">Seu nome completo</label>
+<input id="nome" name="nome" required maxlength="100"
+autocomplete="name">
+
+<label for="telefone">Seu WhatsApp com DDD</label>
+<input id="telefone" name="telefone" required
+inputmode="tel" maxlength="20"
+placeholder="Ex.: 11999999999">
+
+<div id="perguntasContainer"></div>
+
+<div class="actions">
+<button class="button primary" type="submit">
+Continuar para o Pix
+</button>
+
+<button class="button secondary" type="button"
+onclick="voltarConsultas()">
+Voltar às consultas
+</button>
+</div>
+</form>
+</div>
+</section>
+
+<section id="pagamento" class="hidden">
+<h2 class="section-title">Pagamento via Pix</h2>
+
+<p class="section-description">
+Confira seu pedido e realize o pagamento no aplicativo do seu banco.
+</p>
+
+<div class="panel">
+<div class="selected-service">
+<strong>Resumo do pedido</strong>
+<p id="resumoPedido" style="margin-top:10px"></p>
+</div>
+
+<div class="pix-key">
+<span>Chave Pix</span>
+<strong id="chavePix">57399645809</strong>
+<div>Titular: Kleberson Aparecido Batista</div>
+<div>Banco: Santander</div>
+
+<div style="margin-top:15px">
+<button type="button" class="button secondary"
+onclick="copiarPix()">
+📋 Copiar chave Pix
+</button>
+</div>
+
+<p id="mensagemCopiar" class="notice" aria-live="polite"></p>
+</div>
+
+<p>
+<strong>Como pagar:</strong>
+</p>
+
+<p class="notice">
+1. Copie a chave Pix acima.<br>
+2. Abra o aplicativo do seu banco e realize o pagamento.<br>
+3. Retorne a esta página.<br>
+4. Clique no botão abaixo para abrir o WhatsApp.<br>
+5. Envie a mensagem e anexe o comprovante na conversa.
+</p>
+
+<div class="actions">
+<button class="button whatsapp" type="button"
+onclick="enviarWhatsApp()">
+💬 Já paguei — enviar comprovante
+</button>
+
+<button class="button secondary" type="button"
+onclick="voltarPedido()">
+Voltar ao pedido
+</button>
+</div>
+
+<p class="notice">
+O WhatsApp abrirá com a mensagem preenchida. Você precisará
+enviá-la e anexar o comprovante manualmente. O pagamento
+somente será confirmado após a verificação do recebimento.
+</p>
+</div>
+</section>
+
+<section id="como-funciona">
+<h2 class="section-title">Como Funciona</h2>
+
+<p class="section-description">
+Um processo simples para realizar seu pedido.
+</p>
+
+<div class="steps">
+<div class="step">
+<strong>01 · Escolha</strong>
+Selecione o serviço desejado e informe suas dúvidas.
+</div>
+
+<div class="step">
+<strong>02 · Pix</strong>
+Realize o pagamento usando a chave informada no site.
+</div>
+
+<div class="step">
+<strong>03 · WhatsApp</strong>
+Envie os dados do pedido e o comprovante para atendimento.
+</div>
+
+<div class="step">
+<strong>04 · PDF</strong>
+Após a confirmação do pagamento, sua leitura será preparada
+e entregue em PDF, incluída no preço.
+</div>
+</div>
+</section>
+
+<section id="contato">
+<h2 class="section-title">Entre em Contato</h2>
+
+<p class="section-description">
+Tem dúvidas sobre as consultas? Entre em contato pelo WhatsApp.
+</p>
+
+<div style="text-align:center">
+<a class="button whatsapp"
+href="https://wa.me/5511985934594"
+target="_blank"
+rel="noopener noreferrer">
+💬 Conversar no WhatsApp
+</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="logo">🌙 ORÁCULO DO ECLIPSE CIGANO</div>
+
+<p>Uma jornada de reflexão, intuição e autoconhecimento.</p>
+
+<p style="margin-top:12px">
+As leituras têm caráter espiritual e reflexivo e não substituem
+orientações profissionais médicas, psicológicas, jurídicas ou financeiras.
+</p>
+
+<p style="margin-top:15px">© 2026 Oráculo do Eclipse Cigano</p>
+</footer>
+
+<script>
+const WHATSAPP = "5511985934594";
+const PIX = "57399645809";
+
+let pedido = {
+servico: "",
+valor: 0,
+quantidade: 1,
+perguntas: []
+};
+
+function formatarMoeda(valor) {
+return valor.toLocaleString("pt-BR", {
+style: "currency",
+currency: "BRL"
+});
+}
+
+function escolherServico(servico, valor, quantidade) {
+pedido = {
+servico,
+valor,
+quantidade,
+perguntas: []
+};
+
+document.getElementById("servicoSelecionado").textContent = servico;
+document.getElementById("valorSelecionado").textContent =
+formatarMoeda(valor);
+
+const container = document.getElementById("perguntasContainer");
+container.innerHTML = "";
+
+if (quantidade === 1) {
+container.innerHTML = `
+<label for="pergunta1">Sua pergunta ou tema da consulta</label>
+<textarea id="pergunta1" required maxlength="1500"
+placeholder="Escreva sua pergunta ou explique o tema da leitura"></textarea>
+`;
+} else {
+for (let i = 1; i <= quantidade; i++) {
+container.innerHTML += `
+<label for="pergunta${i}">Pergunta ${i}</label>
+<textarea id="pergunta${i}" required maxlength="1000"
+placeholder="Escreva sua pergunta ${i}"></textarea>
+`;
+}
+}
+
+document.getElementById("pedido").classList.remove("hidden");
+document.getElementById("pagamento").classList.add("hidden");
+
+document.getElementById("pedido").scrollIntoView({
+behavior: "smooth"
+});
+}
+
+document.getElementById("formPedido").addEventListener("submit", function(e) {
+e.preventDefault();
+
+pedido.nome = document.getElementById("nome").value.trim();
+pedido.telefone = document.getElementById("telefone").value.trim();
+
+pedido.perguntas = [];
+
+for (let i = 1; i <= pedido.quantidade; i++) {
+const campo = document.getElementById("pergunta" + i);
+
+if (!campo || !campo.value.trim()) {
+alert("Preencha todas as perguntas antes de continuar.");
+campo?.focus();
+return;
+}
+
+pedido.perguntas.push(campo.value.trim());
+}
+
+if (pedido.nome.length < 2) {
+alert("Informe seu nome completo.");
+return;
+}
+
+const telefoneLimpo = pedido.telefone.replace(/\D/g, "");
+
+if (telefoneLimpo.length < 10 || telefoneLimpo.length > 13) {
+alert("Confira o número de WhatsApp informado.");
+return;
+}
+
+document.getElementById("resumoPedido").innerHTML = "";
+
+const resumo = document.getElementById("resumoPedido");
+resumo.textContent =
+"Cliente: " + pedido.nome +
+"\n | Serviço: " + pedido.servico +
+"\n | Valor: " + formatarMoeda(pedido.valor) +
+"\n | Entrega: Leitura em PDF.";
+
+resumo.style.whiteSpace = "pre-line";
+
+document.getElementById("pagamento").classList.remove("hidden");
+document.getElementById("pagamento").scrollIntoView({
+behavior: "smooth"
+});
+});
+
+async function copiarPix() {
+const mensagem = document.getElementById("mensagemCopiar");
+
+try {
+await navigator.clipboard.writeText(PIX);
+mensagem.textContent = "Chave Pix copiada com sucesso!";
+} catch (erro) {
+const campo = document.createElement("textarea");
+campo.value = PIX;
+campo.style.position = "fixed";
+campo.style.opacity = "0";
+document.body.appendChild(campo);
+campo.select();
+
+const copiou = document.execCommand("copy");
+campo.remove();
+
+mensagem.textContent = copiou
+? "Chave Pix copiada com sucesso!"
+: "Copie manualmente a chave Pix exibida acima.";
+}
+}
+
+function enviarWhatsApp() {
+const perguntas = pedido.perguntas
+.map((p, i) => (pedido.quantidade > 1
+? "Pergunta " + (i + 1) + ": "
+: "Pergunta/tema: ") + p)
+.join("\n");
+
+const mensagem =
+`🌙 ORÁCULO DO ECLIPSE CIGANO 🌙
+
+🔮 NOVO PEDIDO DE CONSULTA
+
+👤 Nome: ${pedido.nome}
+📱 WhatsApp: ${pedido.telefone}
+✨ Serviço: ${pedido.servico}
+💰 Valor: ${formatarMoeda(pedido.valor)}
+💭 ${perguntas}
+📄 Entrega: Leitura em PDF, incluída no valor.
+💳 Forma de pagamento: Pix manual.
+🔑 Chave Pix: ${PIX}
+
+Estou enviando o comprovante do pagamento nesta conversa.
+Aguardo a confirmação do pagamento e o atendimento da minha consulta.`;
+
+const url = "https://wa.me/" + WHATSAPP +
+"?text=" + encodeURIComponent(mensagem);
+
+window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function voltarConsultas() {
+document.getElementById("pedido").classList.add("hidden");
+document.getElementById("consultas").scrollIntoView({
+behavior: "smooth"
+});
+}
+
+function voltarPedido() {
+document.getElementById("pagamento").classList.add("hidden");
+document.getElementById("pedido").scrollIntoView({
+behavior: "smooth"
+});
+}
+</script>
+
+  </body>
+</html>
